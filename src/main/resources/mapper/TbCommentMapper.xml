@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.he.farm.mapper.TbCommentMapper">
+    <resultMap id="BaseResultMap" type="com.he.farm.domain.TbComment">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="user_id" jdbcType="INTEGER" property="userId"/>
+        <result column="comment" jdbcType="VARCHAR" property="comment"/>
+        <result column="comment_type" jdbcType="INTEGER" property="commentType"/>
+        <result column="comment_date" jdbcType="DATE" property="commentDate"/>
+    </resultMap>
+
+    <resultMap id="CommentResultMap" type="com.he.farm.domain.vo.Comment">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="user_name" property="userName"/>
+        <result column="comment" jdbcType="VARCHAR" property="comment"/>
+        <result column="comment_type" jdbcType="INTEGER" property="commentType"/>
+        <result column="comment_date" jdbcType="DATE" property="commentDate"/>
+    </resultMap>
+
+    <select id="getAllCommentCount" resultType="int">
+        select  count(*)  from tb_comment
+    </select>
+
+    <select id="getTodayCommentCount" resultType="int">
+        select  count(*)  from  tb_comment
+         where comment_date between #{startdate} and #{enddate}
+    </select>
+
+    <select id="getAllComment" resultMap="CommentResultMap">
+         select c.comment, c.id , u.user_name, c.comment_type , c.comment_date
+         from tb_comment c left  join  tb_member_user u on c.user_id=u.user_id
+    </select>
+
+    <select id="getTodayComment" resultMap="CommentResultMap">
+         select c.comment, c.id , u.user_name, c.comment_type , c.comment_date
+         from tb_comment c left  join  tb_member_user u on c.user_id=u.user_id
+         where c.comment_date between  #{startdate} and #{enddate}
+    </select>
+</mapper>

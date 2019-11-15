@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.he.farm.mapper.TbFarmInfoMapper">
+  <resultMap id="BaseResultMap" type="com.he.farm.domain.TbFarmInfo">
+    <id column="farm_id" jdbcType="INTEGER" property="farmId" />
+    <result column="fram_name" jdbcType="VARCHAR" property="framName" />
+    <result column="delivery_info" jdbcType="VARCHAR" property="deliveryInfo" />
+    <result column="discount_info" jdbcType="VARCHAR" property="discountInfo" />
+    <result column="privide_info" jdbcType="VARCHAR" property="privideInfo" />
+    <result column="notice_info" jdbcType="VARCHAR" property="noticeInfo" />
+  </resultMap>
+
+</mapper>

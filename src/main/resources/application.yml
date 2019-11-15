@@ -1,0 +1,19 @@
+
+server:
+  port: 8088
+  servlet:
+    context-path: /farm
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/famstation?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+  thymeleaf:
+    cache: false
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.he.learn_easyui.pojo
+

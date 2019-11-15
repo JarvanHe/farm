@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.he.farm.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.he.farm.domain.User">
+        <id column="user_id" jdbcType="INTEGER" property="userId"/>
+        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="birthday" jdbcType="DATE" property="birthday"/>
+        <result column="createtime" jdbcType="DATE" property="createtime"/>
+        <result column="tel" jdbcType="VARCHAR" property="tel"/>
+        <result column="receive_address" jdbcType="VARCHAR" property="receiveAddress"/>
+    </resultMap>
+
+    <select id="getTodayUserCount" resultType="int">
+    select  count(*)  from tb_member_user where createtime between #{startTime} and #{endTime}
+  </select>
+
+    <select id="getConsumeByUsername" parameterType="string" resultType="decimal">
+    select sum(order_amount) from order_master where buyer_name=#{username}
+  </select>
+</mapper>
